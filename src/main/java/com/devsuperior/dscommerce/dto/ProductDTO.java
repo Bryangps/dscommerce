@@ -2,6 +2,8 @@ package com.devsuperior.dscommerce.dto;
 
 
 import com.devsuperior.dscommerce.entities.Product;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ProductDTO {
 
@@ -11,10 +13,11 @@ public class ProductDTO {
     private Double price;
     private String imgUrl;
 
-    public ProductDTO(){
-    }
 
-    public ProductDTO(Long id, String name, String description, Double price, String imgUrl) {
+    @JsonCreator
+    public ProductDTO(@JsonProperty("id") Long id, @JsonProperty("name") String name,
+                      @JsonProperty("description") String description, @JsonProperty("price") Double price,
+                      @JsonProperty("imgUrl") String imgUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
